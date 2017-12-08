@@ -4,10 +4,12 @@ Using this VS Code [extension](https://marketplace.visualstudio.com/items?itemNa
 
 ## Setup local development
 Follow this [instructions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local)
-Open Visual Studio Code, clone my repo and publish Function
+Open Visual Studio Code, clone my repo. Publish Function from VS Code extension Azure Functions.
 
 ## IpLocation Function
-This function receives geolocation of ip address (thanks to @valda-z)
+This function receives geolocation of ip address (thanks to @valda-z).
+
+![screenshot1](media/snip1.png)
 
 
 

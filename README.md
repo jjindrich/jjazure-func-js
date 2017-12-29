@@ -3,6 +3,8 @@ This repo contains Azure Function created with Visual Studio Code.
 
 Using this VS Code [extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
+Make sure you have supported NodeJS [link](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
+
 ## Setup local development
 Follow this [instructions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local)
 

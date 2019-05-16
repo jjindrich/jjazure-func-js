@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "value": "jjfunclinux"
+        },
+        "storageName": {
+            "value": "jjfunclinuxstate"
+        },
+        "hostingPlanName": {
+            "value": "jjfunclinuxplan"
+        },
+        "hostingEnvironment": {
+            "value": ""
+        },
+        "location": {
+            "value": "West Europe"
+        },
+        "sku": {
+            "value": "PremiumV2"
+        },
+        "workerSize": {
+            "value": "1"
+        },
+        "skuCode": {
+            "value": "P1v2"
+        },
+        "storageNameQueue": {
+            "value": "jjqueue"
+        }
+    }
+}

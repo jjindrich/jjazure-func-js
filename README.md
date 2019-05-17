@@ -46,10 +46,17 @@ Function is located in src directory. **You will be asked to select home directo
 
 #### Configure settings
 
+How settings works: https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local
+
 First download current settings in local.settings.json - Hit VS Code command **Azure Functions: Download Remote Settings...**
 
-Update this settings in local.settings.json, add connection **jjqueue_STORAGE** for queue:
-"jjqueue_STORAGE": "DefaultEndpointsProtocol=https;AccountName=jjqueue;AccountKey=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa==",
+Update this settings in **local.settings.json**, add connection **jjqueue_STORAGE** for queue:
+"jjqueue_STORAGE": "DefaultEndpointsProtocol=https;AccountName=jjqueue;AccountKey=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+
+Replace with key:
+```bash
+az storage account keys list -g jjfunclinux -n jjqueue --query [0].value -o json
+```
 
 Upload settings to Azure Function - Hit VS Code command **Azure Functions: Upload Local Settings...**
 
@@ -68,6 +75,8 @@ When will be successfully deployed, you will get message about it.
 This function process message in **orders** queue jjqueue storage account and save same message to **delivery** queue.
 
 How to test it ? Go to Azure Portal, select jjqueue storage account and add new message to **orders** queue. Next to to **delivery** queue and check message is saved.
+
+Links: https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue
 
 ## Function: IpLocation
 

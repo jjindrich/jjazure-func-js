@@ -6,6 +6,13 @@
       "direction": "in",
       "queueName": "orders",
       "connection": "jjqueue_STORAGE"
+    },
+    {
+      "name": "$return",
+      "type": "queue",
+      "direction": "out",
+      "queueName": "delivery",
+      "connection": "jjqueue_STORAGE"
     }
   ]
 }

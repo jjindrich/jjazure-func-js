@@ -37,38 +37,40 @@ Go to Azure Portal and check Azure Function is running, try to create new functi
 For following function we need to create queue:
 ```bash
 az storage queue create --account-name jjqueue --account-key $(az storage account keys list -g jjfunclinux -n jjqueue --query [0].value -o json) -n orders
+az storage queue create --account-name jjqueue --account-key $(az storage account keys list -g jjfunclinux -n jjqueue --query [0].value -o json) -n delivery
 ```
 
-### Deploy function in Azure
+### Deploy functions in Azure
 
 Function is located in src directory. **You will be asked to select home directory of function**, select src directory.
 
+#### Configure settings
+
+First download current settings in local.settings.json - Hit VS Code command **Azure Functions: Download Remote Settings...**
+
+Update this settings in local.settings.json, add connection **jjqueue_STORAGE** for queue:
+"jjqueue_STORAGE": "DefaultEndpointsProtocol=https;AccountName=jjqueue;AccountKey=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa==",
+
+Upload settings to Azure Function - Hit VS Code command **Azure Functions: Upload Local Settings...**
+
+Go to Azure Portal and check settings that are applied
+
+![Azure Functions settings](media/func-settings.png)
+
+#### Upload code
+
 ![Function deploy from VSCode](media/func-deploy.png)
 
-When will be sucessfully deployed, you will get message about it.
-
-Next go to the Azure Portal and check functions are deployed.
-
-![Function deployed](media/func-deployed.png)
-
-As you can see, you are getting error about missing **jjqueue_STORAGE** connection string. You have to add connection string.
-
-1. Go to storage account jjqueue and copy connection string: Storage Account -> Access keys
-2. Paste this into Functions configuration
-
-Sample connection string:
-DefaultEndpointsProtocol=https;AccountName=jjqueue;AccountKey=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==;EndpointSuffix=core.windows.net
-
-Function will be automatically reload. Go to back to Azure Function blade and select function. Check no error is displayed.
+When will be successfully deployed, you will get message about it.
 
 ## Function: ProcessQueue
 
-This function process message in orders queue jjqueue storage account.
+This function process message in **orders** queue jjqueue storage account and save same message to **delivery** queue.
 
-How to test it ? Go to Azure Portal, select jjqueue storage account and add new message. In parallel open Azure Portal with this Azure Function and check Log console. There will be new log about processing new message.
+How to test it ? Go to Azure Portal, select jjqueue storage account and add new message to **orders** queue. Next to to **delivery** queue and check message is saved.
 
 ## Function: IpLocation
 
 This function receives geolocation of ip address (thanks to @valda-z).
 
-![screenshot1](media/snip1.png)
+![screenshot1](media/func-iplocation.png)
